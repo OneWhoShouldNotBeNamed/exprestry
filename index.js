@@ -7,7 +7,16 @@ app.get('/', (req, res) => {
     .send('Hello server is running')
     .end();
 });
- 
+app.get("/user", function(req, res){
+  
+    var name = req.query.name
+    var age = req.query.age
+      
+    res
+    .status(200)
+    .send(`Hello ${name} , Aged ${age} years old.`)
+    .end()
+})
 // Start the server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
