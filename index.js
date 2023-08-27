@@ -35,7 +35,7 @@ app.get('/api/data', async (req, res) => {
     if (matchingRow) {
       // res.json(matchingRow);
       res.set('Content-Type', 'text/html');
-      res.send(Buffer.from(`<p>${matchingRow}</p>`));
+      res.send(Buffer.from(`<textarea>${matchingRow}</textarea>`));
     } else {
       res.json({ message: 'No matching row found.' });
     }
