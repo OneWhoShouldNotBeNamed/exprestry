@@ -17,9 +17,8 @@ app.get('/api/data', async (req, res) => {
     credentials,
     scopes: SCOPES,
   });
-  let parsedUrl = url.parse(rawUrl);
-  let parsedQs = querystring.parse(parsedUrl.query);
-  console.log(parsedQs);
+  console.log(req.query);
+ 
   // const sheets = google.sheets({ version: 'v4', auth });
 
   // try {
