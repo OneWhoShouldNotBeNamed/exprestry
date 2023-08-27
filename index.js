@@ -17,9 +17,6 @@ app.get('/api/data', async (req, res) => {
     credentials,
     scopes: SCOPES,
   });
-  // console.log(req.query);
-  //      res.json(req.query);
-
   const sheets = google.sheets({ version: 'v4', auth });
   range = req.sheet
   try {
@@ -31,7 +28,7 @@ app.get('/api/data', async (req, res) => {
     // res.json(result);
 
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
-    const targetValue = req.id; // The value you want to match
+    const targetValue = req.id.toString(); // The value you want to match
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
