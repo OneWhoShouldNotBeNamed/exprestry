@@ -25,11 +25,11 @@ app.get('/api/data', async (req, res) => {
       spreadsheetId,
       range,
     });
+    console.log(data);
 
     const data = result.data.values;
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     const targetValue = 1; // The value you want to match
-
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
