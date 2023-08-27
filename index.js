@@ -9,7 +9,7 @@ const credentials = require('./secrets.json'); // Replace with your service acco
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
 const spreadsheetId = '1ckVrmZxieR26pdN39GVEgEcwdJnHUWmrP8kpNloTuE4';
-const range = 'AICO'; // Adjust this range to match your sheet
+// const range = 'AICO'; // Adjust this range to match your sheet
 
 // Set up a route to fetch data
 app.get('/api/data', async (req, res) => {
@@ -17,30 +17,32 @@ app.get('/api/data', async (req, res) => {
     credentials,
     scopes: SCOPES,
   });
+  let parsedUrl = url.parse(rawUrl);
+  let parsedQs = querystring.parse(parsedUrl.query);
+  console.log(parsedQs);
+  // const sheets = google.sheets({ version: 'v4', auth });
 
-  const sheets = google.sheets({ version: 'v4', auth });
+  // try {
+  //   const result = await sheets.spreadsheets.values.get({
+  //     spreadsheetId,
+  //     range,
+  //   });
+  //   const data = result.data.values;
+  //   // res.json(result);
 
-  try {
-    const result = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range,
-    });
-    const data = result.data.values;
-    // res.json(result);
-
-    const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
-    const targetValue = '1'; // The value you want to match
-    const matchingRow = data.find(row => row[columnToMatch] === targetValue);
-    console.log(matchingRow);
-    if (matchingRow) {
-      res.json(matchingRow);
-    } else {
-      res.json({ message: 'No matching row found.' });
-    }
-  } catch (err) {
-    console.error('Error fetching data from Google Sheets:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+  //   const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
+  //   const targetValue = '1'; // The value you want to match
+  //   const matchingRow = data.find(row => row[columnToMatch] === targetValue);
+  //   console.log(matchingRow);
+  //   if (matchingRow) {
+  //     res.json(matchingRow);
+  //   } else {
+  //     res.json({ message: 'No matching row found.' });
+  //   }
+  // } catch (err) {
+  //   console.error('Error fetching data from Google Sheets:', err);
+  //   res.status(500).json({ error: 'Internal Server Error' });
+  // }
 });
 
 app.listen(PORT, () => {
