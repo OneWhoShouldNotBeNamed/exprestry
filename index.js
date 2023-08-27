@@ -26,7 +26,7 @@ app.get('/api/data', async (req, res) => {
       range,
     });
     const data = result.data.values;
-    res.send(data);
+    res.send(result);
 
     // const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     // const targetValue = 1; // The value you want to match
