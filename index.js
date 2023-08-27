@@ -18,7 +18,7 @@ app.get('/api/data', async (req, res) => {
     scopes: SCOPES,
   });
   console.log(req.query);
-       res.json('ffgfg');
+       res.json(req.query);
 
   // const sheets = google.sheets({ version: 'v4', auth });
 
