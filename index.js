@@ -33,7 +33,9 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-      res.json(matchingRow);
+      // res.json(matchingRow);
+      res.set('Content-Type', 'text/html');
+      res.send(Buffer.from(`<p>${matchingRow}</p>`));
     } else {
       res.json({ message: 'No matching row found.' });
     }
