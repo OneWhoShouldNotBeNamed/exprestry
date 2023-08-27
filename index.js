@@ -9,7 +9,7 @@ const credentials = require('./secrets.json'); // Replace with your service acco
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
 const spreadsheetId = '1ckVrmZxieR26pdN39GVEgEcwdJnHUWmrP8kpNloTuE4';
-const range = 'Sheet1'; // Adjust this range to match your sheet
+const range = 'AICO'; // Adjust this range to match your sheet
 
 // Set up a route to fetch data
 app.get('/api/data', async (req, res) => {
