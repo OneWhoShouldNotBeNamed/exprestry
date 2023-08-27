@@ -26,17 +26,17 @@ app.get('/api/data', async (req, res) => {
       range,
     });
     const data = result.data.values;
-    console.log('gdfg',data);
+    res.send(data);
 
-    const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
-    const targetValue = 1; // The value you want to match
-    const matchingRow = data.find(row => row[columnToMatch] === targetValue);
-    console.log(matchingRow);
-    if (matchingRow) {
-      res.json(matchingRow);
-    } else {
-      res.json({ message: 'No matching row found.' });
-    }
+    // const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
+    // const targetValue = 1; // The value you want to match
+    // const matchingRow = data.find(row => row[columnToMatch] === targetValue);
+    // console.log(matchingRow);
+    // if (matchingRow) {
+    //   res.json(matchingRow);
+    // } else {
+    //   res.json({ message: 'No matching row found.' });
+    // }
   } catch (err) {
     console.error('Error fetching data from Google Sheets:', err);
     res.status(500).json({ error: 'Internal Server Error' });
