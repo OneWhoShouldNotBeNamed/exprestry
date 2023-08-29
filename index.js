@@ -26,7 +26,6 @@ app.get('/api/data', async (req, res) => {
       range,
     });
     const data = result.data.values;
-    // res.json(result);
 
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     const targetValue = req.query.id.toString(); // The value you want to match
@@ -36,6 +35,8 @@ app.get('/api/data', async (req, res) => {
       // res.json(matchingRow);
       res.set('Content-Type', 'text/html');
       res.send(Buffer.from(`<textarea>${matchingRow}</textarea>`));
+      res.send(`<textarea>${data}</textarea>`);
+
     } else {
       res.json({ message: 'No matching row found.' });
     }
