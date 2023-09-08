@@ -33,7 +33,7 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-      res.send(matchingRow[3])
+      res.send(matchingRow)
     //  splitText = splitSections(matchingRow[2])
     //  res.send(splitText);
 
