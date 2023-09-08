@@ -1,6 +1,7 @@
 const express = require('express');
 const { google } = require('googleapis');
 const fs = require('fs');
+import { splitSections } from './functions';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,7 +33,9 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-      res.json(matchingRow);
+     splitText = splitSections(matchingRow[2])
+     res.json(splitText);
+
       // res.set('Content-Type', 'text/html');
       // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  
       // <br />
