@@ -42,12 +42,12 @@ app.get('/api/data', async (req, res) => {
       // <textarea>${data}</textarea>
       // `));
 
-      const profileSummary = matchingRow[2];
+      var profileSummary = matchingRow[2];
       // Define an object to store the sections
-      const profileSummarysections = {};
+      var profileSummarysections = {};
       
       // Define the keywords to split the sections
-      const ProfileSummarykeywords = [
+      var ProfileSummarykeywords = [
         "QuickSummary\n",
         "\n\nSkills",
         "\n\nOpportunities",
@@ -56,10 +56,10 @@ app.get('/api/data', async (req, res) => {
       ];
       
       // Create a regular expression pattern that matches any of the keywords
-      const regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
+      var regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
       
       // Split the text into sections using the regular expression
-      const sectionArray = profileSummary.split(regexPattern);
+      var sectionArray = profileSummary.split(regexPattern);
       
       // Iterate through the sections and store them in the object
       for (let i = 1; i < sectionArray.length; i += 2) {
