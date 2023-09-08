@@ -1,4 +1,4 @@
-function splitSections(text) {
+function splitSections(text,section) {
   const profileSummary = text;
   //
   var profileSummarysections = {};
@@ -12,8 +12,18 @@ function splitSections(text) {
     "\n\nRecommendationsforImprovement",
   ];
 
+  var InsightsKeyWord = [
+    "ProfileAnalysis\n",
+    "\n\nKnowledgeEconomyInterventions\n",
+    "\n\nStrategy\n",
+    "\n \nActionPlan\n",
+    "\n\nEcosystemCreation\n",
+    "\nSuggestionsfortheKnowledgeEconomyAdvisor\n"
+  ]
+  var selectedArray = section ==='Profile Summary' ? ProfileSummarykeywords : InsightsKeyWord
+
   // Create a regular expression pattern that matches any of the keywords
-  var regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
+  var regexPattern = new RegExp(`(${selectedArray.join("|")})`, "g");
 
   // Split the text into sections using the regular expression
   var sectionArray = profileSummary.split(regexPattern);
