@@ -33,12 +33,36 @@ app.get('/api/data', async (req, res) => {
     console.log(matchingRow);
     if (matchingRow) {
       // res.json(matchingRow);
-      res.set('Content-Type', 'text/html');
-      res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  
-      <br />
-      <textarea>${data}</textarea>
-      `));
+      const text = matchingRow;
 
+      // Define an object to store the sections
+      const sections = {};
+      
+      // Use regular expressions to split the text into sections
+      const regex = /(Quick Summary|Skills|Opportunities|Market Analysis|Recommendations for Improvement)/g;
+      let matches;
+      let lastIndex = 0;
+      
+      while ((matches = regex.exec(text)) !== null) {
+          const sectionName = matches[1];
+          const sectionStartIndex = matches.index;
+          
+          // Extract the content between sections
+          const sectionContent = text.substring(lastIndex, sectionStartIndex).trim();
+          
+          // Update the lastIndex
+          lastIndex = sectionStartIndex + matches[0].length;
+          
+          // Store the section content in the sections object
+          sections[sectionName] = sectionContent;
+      }
+      
+      // Add the last section (after the last keyword)
+      sections["Recommendations for Improvement"] = text.substring(lastIndex).trim();
+      
+      // Print the extracted sections
+      // console.log(sections);
+      res.send(sections)
     } else {
       res.json({ message: 'No matching row found.' });
     }
