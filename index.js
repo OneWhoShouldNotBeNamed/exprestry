@@ -13,7 +13,7 @@ const spreadsheetId = '1ckVrmZxieR26pdN39GVEgEcwdJnHUWmrP8kpNloTuE4';
 // const range = 'AICO'; // Adjust this range to match your sheet
 
 // Set up a route to fetch data
-app.get('/api/data', async (req, res) => {
+app.get('/api/data', async (req, res) => { 
   const auth = new google.auth.GoogleAuth({
     credentials,
     scopes: SCOPES,
@@ -34,7 +34,7 @@ app.get('/api/data', async (req, res) => {
     console.log(matchingRow);
     if (matchingRow) {
      splitText = splitSections(matchingRow[2])
-     res.json(splitText);
+     res.send(splitText);
 
       // res.set('Content-Type', 'text/html');
       // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  

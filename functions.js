@@ -1,4 +1,4 @@
-export function splitSections(text){
+function splitSections(text){
     const profileSummary = text;
 // Define an object to store the sections
 const profileSummarysections = {};
@@ -29,3 +29,4 @@ for (let i = 1; i < sectionArray.length; i += 2) {
 return sections;
 
 }
+module.exports = {splitSections}
