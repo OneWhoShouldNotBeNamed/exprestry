@@ -33,8 +33,8 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-     splitText = splitSections(matchingRow[2])
-     res.send(splitText);
+    //  splitText = splitSections(matchingRow[2])
+    //  res.send(splitText);
 
       // res.set('Content-Type', 'text/html');
       // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  
@@ -42,34 +42,34 @@ app.get('/api/data', async (req, res) => {
       // <textarea>${data}</textarea>
       // `));
 
-      // const profileSummary = matchingRow[2];
-      // // Define an object to store the sections
-      // const profileSummarysections = {};
+      const profileSummary = matchingRow[2];
+      // Define an object to store the sections
+      const profileSummarysections = {};
       
-      // // Define the keywords to split the sections
-      // const ProfileSummarykeywords = [
-      //   "QuickSummary\n",
-      //   "\n\nSkills",
-      //   "\n\nOpportunities",
-      //   "\n \nMarketAnalysis\n",
-      //   "\n\nRecommendationsforImprovement",
-      // ];
+      // Define the keywords to split the sections
+      const ProfileSummarykeywords = [
+        "QuickSummary\n",
+        "\n\nSkills",
+        "\n\nOpportunities",
+        "\n \nMarketAnalysis\n",
+        "\n\nRecommendationsforImprovement",
+      ];
       
-      // // Create a regular expression pattern that matches any of the keywords
-      // const regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
+      // Create a regular expression pattern that matches any of the keywords
+      const regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
       
-      // // Split the text into sections using the regular expression
-      // const sectionArray = profileSummary.split(regexPattern);
+      // Split the text into sections using the regular expression
+      const sectionArray = profileSummary.split(regexPattern);
       
-      // // Iterate through the sections and store them in the object
-      // for (let i = 1; i < sectionArray.length; i += 2) {
-      //   const sectionName = sectionArray[i].trim();
-      //   const sectionContent = sectionArray[i + 1].trim();
-      //   profileSummarysections[sectionName] = sectionContent;
-      // }
+      // Iterate through the sections and store them in the object
+      for (let i = 1; i < sectionArray.length; i += 2) {
+        const sectionName = sectionArray[i].trim();
+        const sectionContent = sectionArray[i + 1].trim();
+        profileSummarysections[sectionName] = sectionContent;
+      }
       
-      // // Print the extracted sections
-      // res.send( profileSummarysections);
+      // Print the extracted sections
+      res.send(profileSummarysections);
 
 
 
