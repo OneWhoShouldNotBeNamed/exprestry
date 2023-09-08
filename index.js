@@ -33,8 +33,9 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-     splitText = splitSections(matchingRow[2])
-     res.send(splitText);
+      res.send(matchingRow[3])
+    //  splitText = splitSections(matchingRow[2])
+    //  res.send(splitText);
 
       // res.set('Content-Type', 'text/html');
       // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  
