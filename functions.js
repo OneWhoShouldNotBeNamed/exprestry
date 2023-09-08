@@ -1,10 +1,10 @@
-function splitSections(text){
-    const profileSummary = text;
-// Define an object to store the sections
-const profileSummarysections = {};
-
+export function splitSections(text){
+ const profileSummary = text;
+//    
+var profileSummarysections = {};
+      
 // Define the keywords to split the sections
-const ProfileSummarykeywords = [
+var ProfileSummarykeywords = [
   "QuickSummary\n",
   "\n\nSkills",
   "\n\nOpportunities",
@@ -13,10 +13,10 @@ const ProfileSummarykeywords = [
 ];
 
 // Create a regular expression pattern that matches any of the keywords
-const regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
+var regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
 
 // Split the text into sections using the regular expression
-const sectionArray = profileSummary.split(regexPattern);
+var sectionArray = profileSummary.split(regexPattern);
 
 // Iterate through the sections and store them in the object
 for (let i = 1; i < sectionArray.length; i += 2) {

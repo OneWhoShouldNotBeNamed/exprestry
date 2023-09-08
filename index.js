@@ -33,46 +33,14 @@ app.get('/api/data', async (req, res) => {
     const matchingRow = data.find(row => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
-    //  splitText = splitSections(matchingRow[2])
-    //  res.send(splitText);
+     splitText = splitSections(matchingRow[2])
+     res.send(splitText);
 
       // res.set('Content-Type', 'text/html');
       // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>  
       // <br />
       // <textarea>${data}</textarea>
       // `));
-
-      var profileSummary = matchingRow[2];
-      // Define an object to store the sections
-      var profileSummarysections = {};
-      
-      // Define the keywords to split the sections
-      var ProfileSummarykeywords = [
-        "QuickSummary\n",
-        "\n\nSkills",
-        "\n\nOpportunities",
-        "\n \nMarketAnalysis\n",
-        "\n\nRecommendationsforImprovement",
-      ];
-      
-      // Create a regular expression pattern that matches any of the keywords
-      var regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
-      
-      // Split the text into sections using the regular expression
-      var sectionArray = profileSummary.split(regexPattern);
-      
-      // Iterate through the sections and store them in the object
-      for (let i = 1; i < sectionArray.length; i += 2) {
-        const sectionName = sectionArray[i].trim();
-        const sectionContent = sectionArray[i + 1].trim();
-        profileSummarysections[sectionName] = sectionContent;
-      }
-      
-      // Print the extracted sections
-      res.send(profileSummarysections);
-
-
-
     } else {
       res.json({ message: 'No matching row found.' });
     }
