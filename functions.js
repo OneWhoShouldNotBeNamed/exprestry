@@ -16,7 +16,7 @@ function splitSections(text,section) {
     "ProfileAnalysis\n",
     "\n\nKnowledgeEconomyInterventions\n",
     "\n\nStrategy\n",
-    "\n \nActionPlan\n",
+    "\n\nActionPlan\n",
     "\n\nEcosystemCreation\n",
     "\nSuggestionsfortheKnowledgeEconomyAdvisor\n"
   ]
