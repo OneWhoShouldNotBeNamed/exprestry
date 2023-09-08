@@ -1,7 +1,7 @@
 const express = require('express');
 const { google } = require('googleapis');
 const fs = require('fs');
-// import { splitSections } from './functions.js';
+import { splitSections } from './functions.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
