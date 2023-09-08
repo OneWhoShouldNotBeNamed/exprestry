@@ -16,17 +16,17 @@ const ProfileSummarykeywords = [
 const regexPattern = new RegExp(`(${ProfileSummarykeywords.join("|")})`, "g");
 
 // Split the text into sections using the regular expression
-const sectionArray = text.split(regexPattern);
+const sectionArray = profileSummary.split(regexPattern);
 
 // Iterate through the sections and store them in the object
 for (let i = 1; i < sectionArray.length; i += 2) {
   const sectionName = sectionArray[i].trim();
   const sectionContent = sectionArray[i + 1].trim();
-  sections[sectionName] = sectionContent;
+  profileSummarysections[sectionName] = sectionContent;
 }
 
 // Print the extracted sections
-return sections;
+return profileSummarysections;
 
 }
 module.exports = {splitSections}
