@@ -1,9 +1,32 @@
 const express = require("express");
 const { google } = require("googleapis");
 const fs = require("fs");
+const cors = require('cors');
+
 const splitSections = require("./functions");
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : [];
+
 const app = express();
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Check if the origin is in the list of allowed origins
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
+
+
+
+
 const PORT = process.env.PORT || 3000;
 
 const credentials = require("./secrets.json"); // Replace with your service account key path
