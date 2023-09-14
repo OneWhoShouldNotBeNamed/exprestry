@@ -36,7 +36,10 @@ app.get("/api/data", async (req, res) => {
       // res.send(matchingRow)
       profileSummary = splitSections(matchingRow[2],'Profile Summary');
       insight = splitSections(matchingRow[3],'Insights');
-      const mergedObject = [...profileSummary, ...insight ];
+      var mergedObject =[];
+      mergedObject.push(profileSummary),
+      mergedObject.push(insight)
+      // const mergedObject = [...profileSummary, ...insight ];
       res.send(mergedObject);
 
       // res.set('Content-Type', 'text/html');
