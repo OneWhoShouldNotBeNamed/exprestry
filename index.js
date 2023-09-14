@@ -10,6 +10,7 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   : [];
 
 const app = express();
+app.options('*', cors()); // Respond to all OPTIONS requests with CORS headers
 
 app.use(
   cors({
