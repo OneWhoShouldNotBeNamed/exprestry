@@ -65,7 +65,7 @@ app.get("/api/data", async (req, res) => {
       } else if (range === "CareerSparsh") {
         ccs = splitSections(matchingRow[2], "CCS");
         dacc = splitSections(matchingRow[3], "DACC");
-        csa = splitSections(matchingRow[3], "CSA");
+        csa = splitSections(matchingRow[4], "CSA");
         mergedObject = { ...ccs, ...dacc,...csa };
       }
       res.send(mergedObject);
