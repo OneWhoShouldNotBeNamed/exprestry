@@ -66,7 +66,7 @@ app.get("/api/data", async (req, res) => {
         ccs = splitSections(matchingRow[2], "CCS");
         dacc = splitSections(matchingRow[3], "DACC");
         csa = splitSections(matchingRow[3], "CSA");
-        mergedObject = { ...css, ...dacc,...csa };
+        mergedObject = { ...ccs, ...dacc,...csa };
       }
       res.send(mergedObject);
     } else {
