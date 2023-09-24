@@ -63,9 +63,12 @@ app.get("/api/data", async (req, res) => {
         insight = splitSections(matchingRow[3], "Insights");
         mergedObject = { ...profileSummary, ...insight };
       } else if (range === "CareerSparsh") {
-        res.send(matchingRow)
+        ccs = splitSections(matchingRow[2], "CCS");
+        dacc = splitSections(matchingRow[3], "DACC");
+        csa = splitSections(matchingRow[3], "CSA");
+        mergedObject = { ...css, ...dacc,...csa };
       }
-    
+      res.send(mergedObject);
     } else {
       res.json({ message: "No matching row found." });
     }

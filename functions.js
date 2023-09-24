@@ -1,4 +1,4 @@
-function splitSections(text,section) {
+function splitSections(text, section) {
   const profileSummary = text;
   //
   var profileSummarysections = {};
@@ -18,9 +18,61 @@ function splitSections(text,section) {
     "\n\nStrategy\n",
     "\n\nActionPlan\n",
     "\n\nEcosystemCreation\n",
-    "\nSuggestionsfortheKnowledgeEconomyAdvisor\n"
-  ]
-  var selectedArray = section ==='Profile Summary' ? ProfileSummarykeywords : InsightsKeyWord
+    "\nSuggestionsfortheKnowledgeEconomyAdvisor\n",
+  ];
+
+  var CCS = [
+    "PersonalDetails\n",
+    "\n\nWorkExperience\n",
+    "\n\nEducationalBackground\n",
+    "\n\nCareerAspirations\n",
+    "\n\nLanguageProficiency\n",
+    "\n\nFuturePlans\n",
+    "\n\nKeyTakeaways\n",
+  ];
+  var DACC = [
+    "\nPersonalInformation\n",
+    "\n\nEducationalBackground\n",
+    "\n\nCareerAspirations\n",
+    "\n\nSkillset\n",
+    "\n\nAvailabilityandConstraints\n",
+    "\n\nGoalsandMotivations\n",
+    "\n\nPotentialCareerPaths\n",
+    "\n\nAttitudeandBehavior\n",
+    "\n\nPassionandInterests\n",
+    "\n\nWorkStyleandPreferences\n",
+    "\n\nEmotionalIntelligence\n",
+    "\n\nResilienceandStressManagement\n",
+    "\n\nAdaptability\n",
+    "\n\nRiskTaking\n",
+  ];
+  var CSA = [
+    "Short-TermOpportunities\n",
+    "\n\nLong-TermOpportunities\n",
+    "\n\nSkillingOpportunities\n",
+    "\n\nLeadershipTraining\n",
+  ];
+  // var selectedArray =
+  //   section === "Profile Summary" ? ProfileSummarykeywords : InsightsKeyWord;
+  switch (section) {
+    case "Profile Summary":
+      selectedArray = ProfileSummarykeywords;
+      break;
+    case "Insights":
+      selectedArray = InsightsKeyWord;
+      break;
+    case "CCS":
+      selectedArray = CCS;
+      break;
+    case "DACC":
+      selectedArray = DACC;
+      break;
+    case "CSA":
+      selectedArray = CSA;
+      break;
+    default:
+      console.log("It's the weekend!");
+  }
 
   // Create a regular expression pattern that matches any of the keywords
   var regexPattern = new RegExp(`(${selectedArray.join("|")})`, "g");
@@ -38,4 +90,5 @@ function splitSections(text,section) {
   // Print the extracted sections
   return profileSummarysections;
 }
+
 module.exports = splitSections;
