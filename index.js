@@ -51,7 +51,7 @@ app.get("/api/data", async (req, res) => {
       range,
     });
     const data = result.data.values;
-    var mergedObject = {};
+    var mergedObject ;
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     const targetValue = req.query.id.toString(); // The value you want to match
     const matchingRow = data.find((row) => row[columnToMatch] === targetValue);
