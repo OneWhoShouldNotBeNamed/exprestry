@@ -55,18 +55,18 @@ app.get("/api/data", async (req, res) => {
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     const targetValue = req.query.id.toString(); // The value you want to match
     const matchingRow = data.find((row) => row[columnToMatch] === targetValue);
-    console.log(matchingRow);
     if (matchingRow) {
       // res.send(matchingRow)
       if (range === "AICO") {
         profileSummary = splitSections(matchingRow[2], "Profile Summary");
         insight = splitSections(matchingRow[3], "Insights");
-        mergedObject = { ...profileSummary, ...insight };
+        // console.log('profileSummary',profileSummary);
+        mergedObject = [profileSummary, insight];
       } else if (range === "CareerSparsh") {
         ccs = splitSections(matchingRow[2], "CCS");
         dacc = splitSections(matchingRow[3], "DACC");
         csa = splitSections(matchingRow[4], "CSA");
-        mergedObject = { ...ccs, ...dacc,...csa };
+        mergedObject = [ccs, dacc,csa];
       }
       res.send(mergedObject);
     } else {
