@@ -27,23 +27,21 @@ app.get("/api/data", async (req, res) => {
       range,
     });
     const data = result.data.values;
-
+    const mergedObject = {};
     const columnToMatch = 0; // Index of the column to match (e.g., column B is index 1)
     const targetValue = req.query.id.toString(); // The value you want to match
     const matchingRow = data.find((row) => row[columnToMatch] === targetValue);
     console.log(matchingRow);
     if (matchingRow) {
       // res.send(matchingRow)
-      profileSummary = splitSections(matchingRow[2],'Profile Summary');
-      insight = splitSections(matchingRow[3],'Insights');
-      const mergedObject = { ...profileSummary, ...insight };
-      res.send(mergedObject);
-
-      // res.set('Content-Type', 'text/html');
-      // res.send(Buffer.from(`<textarea>${matchingRow}</textarea>
-      // <br />
-      // <textarea>${data}</textarea>
-      // `));
+      if (range === "AICO") {
+        profileSummary = splitSections(matchingRow[2], "Profile Summary");
+        insight = splitSections(matchingRow[3], "Insights");
+        mergedObject = { ...profileSummary, ...insight };
+      } else if (range === "career") {
+        res.send(matchingRow)
+      }
+      // res.send(mergedObject);
     } else {
       res.json({ message: "No matching row found." });
     }
