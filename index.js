@@ -62,7 +62,7 @@ app.get("/api/data", async (req, res) => {
         profileSummary = splitSections(matchingRow[2], "Profile Summary");
         insight = splitSections(matchingRow[3], "Insights");
         mergedObject = { ...profileSummary, ...insight };
-      } else if (range === "CAREER") {
+      } else if (range === "CareerSparsh") {
         res.send(matchingRow)
       }
     
